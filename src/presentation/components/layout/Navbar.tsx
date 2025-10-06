@@ -42,7 +42,7 @@ export function Navbar() {
     { href: "/lessons", label: "บทเรียน", icon: "📚" },
     { href: "/practice", label: "ฝึกฝน", icon: "🎯" },
     { href: "/achievements", label: "รางวัล", icon: "🏆" },
-    { href: "/about", label: "เกี่ยวกับ", icon: "ℹ️" },
+    { href: "/settings", label: "ตั้งค่า", icon: "⚙️" },
   ];
 
   const isActive = (href: string) => {
