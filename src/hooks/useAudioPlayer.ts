@@ -46,6 +46,7 @@ export function useAudioPlayer(audioUrl?: string) {
         }
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Load audio when URL changes

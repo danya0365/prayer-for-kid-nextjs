@@ -6,7 +6,6 @@ interface AudioPlayerProps {
   audioUrl?: string;
   title?: string;
   subtitle?: string;
-  autoPlay?: boolean;
   showSpeed?: boolean;
   showLoop?: boolean;
   className?: string;
@@ -16,7 +15,6 @@ export function AudioPlayer({
   audioUrl,
   title,
   subtitle,
-  autoPlay = false,
   showSpeed = true,
   showLoop = true,
   className = "",
