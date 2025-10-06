@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Navbar } from "@/src/presentation/components/layout/Navbar";
+import { Footer } from "@/src/presentation/components/layout/Footer";
 import "../public/styles/index.css";
 
 export const metadata: Metadata = {
@@ -14,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <body className={`antialiased`}>{children}</body>
+      <body className="antialiased">
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
