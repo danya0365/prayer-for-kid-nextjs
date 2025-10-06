@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface AudioPlayerState {
   isPlaying: boolean;
@@ -35,10 +35,10 @@ export function useAudioPlayer(audioUrl?: string) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       audioRef.current = new Audio();
-      
+
       // Set initial volume
       audioRef.current.volume = state.volume;
-      
+
       return () => {
         if (audioRef.current) {
           audioRef.current.pause();
@@ -46,7 +46,6 @@ export function useAudioPlayer(audioUrl?: string) {
         }
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Load audio when URL changes
@@ -100,7 +99,10 @@ export function useAudioPlayer(audioUrl?: string) {
 
     return () => {
       if (audioRef.current) {
-        audioRef.current.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        audioRef.current.removeEventListener(
+          "loadedmetadata",
+          handleLoadedMetadata
+        );
         audioRef.current.removeEventListener("timeupdate", handleTimeUpdate);
         audioRef.current.removeEventListener("ended", handleEnded);
         audioRef.current.removeEventListener("error", handleError);
@@ -171,7 +173,9 @@ export function useAudioPlayer(audioUrl?: string) {
     if (isNaN(seconds)) return "00:00";
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    return `${mins.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   }, []);
 
   return {

@@ -6,6 +6,7 @@ interface AudioPlayerProps {
   audioUrl?: string;
   title?: string;
   subtitle?: string;
+  autoPlay?: boolean;
   showSpeed?: boolean;
   showLoop?: boolean;
   className?: string;
@@ -15,6 +16,7 @@ export function AudioPlayer({
   audioUrl,
   title,
   subtitle,
+  autoPlay = false,
   showSpeed = true,
   showLoop = true,
   className = "",
@@ -55,7 +57,9 @@ export function AudioPlayer({
   }
 
   return (
-    <div className={`bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl p-6 ${className}`}>
+    <div
+      className={`bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-3xl shadow-xl p-6 ${className}`}
+    >
       {/* Title */}
       {(title || subtitle) && (
         <div className="mb-6 text-center">
@@ -87,7 +91,11 @@ export function AudioPlayer({
             </svg>
           ) : (
             // Play Icon
-            <svg className="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-10 h-10 ml-1"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M8 5v14l11-7z" />
             </svg>
           )}
@@ -104,7 +112,9 @@ export function AudioPlayer({
           onChange={(e) => seek(parseFloat(e.target.value))}
           className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer accent-blue-500"
           style={{
-            background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${(currentTime / duration) * 100}%, #E5E7EB ${(currentTime / duration) * 100}%, #E5E7EB 100%)`,
+            background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${
+              (currentTime / duration) * 100
+            }%, #E5E7EB ${(currentTime / duration) * 100}%, #E5E7EB 100%)`,
           }}
         />
         <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mt-2">
