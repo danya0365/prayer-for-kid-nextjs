@@ -1,6 +1,6 @@
+import { MainLayout } from "@/src/presentation/components/layout/MainLayout";
 import type { Metadata } from "next";
-import { Navbar } from "@/src/presentation/components/layout/Navbar";
-import { Footer } from "@/src/presentation/components/layout/Footer";
+import { ThemeProvider } from "next-themes";
 import "../public/styles/index.css";
 
 export const metadata: Metadata = {
@@ -15,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th">
+    <html lang="th" suppressHydrationWarning>
       <body className="antialiased">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <MainLayout>{children}</MainLayout>
+        </ThemeProvider>
       </body>
     </html>
   );
